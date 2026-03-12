@@ -32,6 +32,6 @@ body {
   }
 }
 
-.animate-bounce-ounce {
-  animation: bounce-ounce 0.3s ease-out; 
+.animate-bounce-once {
+  animation: bounce-once 0.3s ease-out; 
 }

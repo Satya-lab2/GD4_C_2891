@@ -1,24 +1,24 @@
 import React from 'react';
 import { FaQuestion } from 'react-icons/fa';
 
-function Card({card, isFlipped, isMacthed, onFlip}) {
+function Card({ card, isFlipped, isMatched, onFlip }) {
     const handleClick = () => {
-        if (!isFlipped && !isMacthed) {
+        if (!isFlipped && !isMatched) {
             onFlip(card.id);
         }
     };
 
-    const isOpen = isFlipped || isMacthed;
+    const isOpen = isFlipped || isMatched;
     const IconComponent = card.icon;
 
-    const cardClass = `w-20 h-20 flex items-center justify-center text-3xl rounded-xl cursor-pointer select-none transition-asll duration-300 transform
+    const cardClass = `w-20 h-20 flex items-center justify-center text-3xl rounded-xl cursor-pointer select-none transition-all duration-300 transform
     ${isOpen ? 'bg-white shadow-md scale-100' : 'bg-gradient-to-br from-purple-500 to-indigo-600 shadow-lg hover:scale-105 hover:shadow-xl'}
-    ${isMacthed ? 'opacity-70 ring-2 ring-green-400' : ''}`;
+    ${isMatched ? 'opacity-70 ring-2 ring-green-400' : ''}`;
 
     return (
         <div onClick={handleClick} className={cardClass}>
             {isOpen ? (
-                <span className='animate-bounce-ounce'>
+                <span className='animate-bounce-once'>
                     <IconComponent style={{color: card.color}}/>
                 </span>
             ) : (
