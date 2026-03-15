@@ -1,42 +1,86 @@
-import React from 'react';
-import { FaClock, FaMousePointer, FaCheck, FaSyncAlt, FaRedo } from 'react-icons/fa';
+import React from "react";
+import { FaClock, FaMousePointer, FaCheck, FaRedo } from "react-icons/fa";
 
-function ScoreBoard({ moves, matchedCount, totalPairs, onReset }) {
-    const isGameComplete = matchedCount === totalPairs;
+function ScoreBoard({ moves, matchedCount, totalPairs, time, onReset }) {
 
-    return (
-        <div className='text-center mb-6'>
-            <div className='flex justify-center gap-8 mb-4'>
-                <div className='bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg'>
-                    <p className='text-sm text-indigo-200 flex items-center justify-center gap-1'>
-                        <FaMousePointer className='text-indigo-300'/> Percobaan
-                    </p>
-                    <p className='text-2xl font-bold text-white'>{moves}</p>
-                </div>
+  const isGameComplete = matchedCount === totalPairs;
 
-                <div className='bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg'>
-                    <p className='text-sm text-indigo-200 flex items-center justify-center gap-1'>
-                        <FaCheck className='text-indigo-300'/> Ditemukan
-                    </p>
-                    <p className='text-2xl font-bold text-white'>{matchedCount}/{totalPairs}</p>
-                </div>
-            </div>
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
 
-            {isGameComplete && (
-                <p className='text-yellow-300 font-bold text-lg mb-2 animate-pulse'>
-                    🎉 Selamat! Kamu menang dalam {moves} percobaan
-                </p>
-            )}
+  const formattedTime =
+    `${minutes}:${seconds.toString().padStart(2, "0")}`;
 
-            <button
-                    onClick={onReset}
-                    className='px-6 py-2 bg-yellow-400 text-indigo-900 font-bold rounded-full hover:bg-yellow-300 transition-colors duration-200 shadow-lg flex items-center gap-2 mx-auto'
-            >
-                    {isGameComplete ? <FaRedo/> : <FaSyncAlt/>}
-                    {isGameComplete ? 'Main Lagi' : 'Acak Ulang'}
-            </button>
+  return (
+
+    <div className="text-center">
+
+      <div className="flex gap-6 justify-center mb-6">
+
+        <div className="bg-white/10 border border-white/20 backdrop-blur-sm px-8 py-4 rounded-2xl w-48">
+
+          <p className="text-indigo-200 text-sm flex justify-center gap-2">
+            <FaClock/> WAKTU
+          </p>
+
+          <p className="text-4xl font-bold text-white">
+            {formattedTime}
+          </p>
+
         </div>
-    );
+
+        <div className="bg-white/10 border border-white/20 backdrop-blur-sm px-8 py-4 rounded-2xl w-48">
+
+          <p className="text-indigo-200 text-sm flex justify-center gap-2">
+            <FaMousePointer/> PERCOBAAN
+          </p>
+
+          <p className="text-4xl font-bold text-white">
+            {moves}
+          </p>
+
+        </div>
+
+        <div className="bg-white/10 border border-white/20 backdrop-blur-sm px-8 py-4 rounded-2xl w-48">
+
+          <p className="text-indigo-200 text-sm flex justify-center gap-2">
+            <FaCheck/> DITEMUKAN
+          </p>
+
+          <p className="text-4xl font-bold text-white">
+            {matchedCount}/{totalPairs}
+          </p>
+
+        </div>
+
+      </div>
+
+      {isGameComplete && (
+
+        <>
+          <div className="bg-yellow-400/20 border border-yellow-400 px-6 py-6 rounded-2xl mb-6">
+
+            <p className="text-yellow-300 text-2xl font-bold">
+
+              🎉 Selamat! Selesai dalam waktu {formattedTime}
+              dengan {moves} percobaan!
+
+            </p>
+
+          </div>
+
+          <button
+            onClick={onReset}
+            className="px-10 py-4 bg-yellow-400 text-indigo-900 font-bold text-xl rounded-full hover:bg-yellow-300 transition shadow-lg flex items-center gap-3 mx-auto"
+          >
+            <FaRedo/> Main Lagi
+          </button>
+
+        </>
+      )}
+
+    </div>
+  );
 }
 
 export default ScoreBoard;

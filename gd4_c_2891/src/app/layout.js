@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Memory Card Game",
-  description: "Latihan React Dasar - Memory Card Game",
+  description: "Latihan React Dasar",
 };
 
 export default function RootLayout({ children }) {
