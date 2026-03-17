@@ -1,13 +1,11 @@
-import React from "react";
-import Card from "./Card";
+import React from 'react';
+import Card from './Card';
 
 function GameBoard({ cards = [], flippedCards = [], matchedCards = [], onFlip }) {
 
   return (
     <div className="grid grid-cols-4 gap-6 justify-items-center">
-
-      {cards.map((card) => (
-
+      {cards.map(card => (
         <Card
           key={card.id}
           card={card}
@@ -15,9 +13,7 @@ function GameBoard({ cards = [], flippedCards = [], matchedCards = [], onFlip })
           isMatched={matchedCards.includes(card.id)}
           onFlip={onFlip}
         />
-
       ))}
-
     </div>
   );
 }
