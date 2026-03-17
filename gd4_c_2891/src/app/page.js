@@ -150,7 +150,7 @@ export default function Home() {
       <div className="absolute w-[500px] h-[500px] bg-purple-600 opacity-30 blur-[150px] rounded-full top-[-150px] left-[-150px]"></div>
       <div className="absolute w-[500px] h-[500px] bg-pink-600 opacity-30 blur-[150px] rounded-full bottom-[-150px] right-[-150px]"></div>
 
-      <div className="relative flex flex-col items-center text-center gap-8">
+      <div className="relative flex flex-col items-center text-center gap-5">
 
         <h1 className="text-5xl font-bold text-white flex items-center gap-3">
 
